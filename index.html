@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quantum Optics & Photonics Research Group</title>
+
+<meta name="description"
+content="Research group working on quantum optics, photonics, single-photon technologies, quantum materials and devices.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+:root {
+    --bg: #07111f;
+    --bg2: #0b1728;
+    --card: rgba(16, 31, 51, 0.72);
+    --text: #f4f7fb;
+    --muted: #9eacbd;
+    --accent: #67e8f9;
+    --accent2: #8b5cf6;
+    --border: rgba(255,255,255,0.09);
+    --max: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(103,232,249,.08), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(139,92,246,.10), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: min(92%, var(--max));
+    margin: auto;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(16px);
+    background: rgba(7,17,31,.72);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.logo-symbol {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--accent);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-size: 20px;
+    position: relative;
+}
+
+.logo-symbol::before,
+.logo-symbol::after {
+    content: "";
+    position: absolute;
+    width: 48px;
+    height: 18px;
+    border: 1px solid rgba(103,232,249,.5);
+    border-radius: 50%;
+}
+
+.logo-symbol::after {
+    transform: rotate(60deg);
+}
+
+.nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--muted);
+    font-size: .9rem;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.menu {
+    display: none;
+    font-size: 26px;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 820px;
+    padding-top: 80px;
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--accent);
+    border: 1px solid rgba(103,232,249,.25);
+    background: rgba(103,232,249,.05);
+    padding: 7px 14px;
+    border-radius: 30px;
+    font-size: .78rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(3rem, 7vw, 6.2rem);
+    line-height: .98;
+    letter-spacing: -0.06em;
+    margin-bottom: 28px;
+}
+
+.gradient {
+    background: linear-gradient(
+        90deg,
+        var(--accent),
+        #c4b5fd,
+        var(--accent2)
+    );
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    max-width: 680px;
+    font-size: 1.12rem;
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 13px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #031018;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(103,232,249,.2);
+}
+
+.btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* Quantum Orb */
+
+.quantum-orb {
+    position: absolute;
+    right: 5%;
+    top: 25%;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    border: 1px solid rgba(103,232,249,.25);
+    box-shadow:
+        0 0 80px rgba(103,232,249,.08),
+        inset 0 0 60px rgba(139,92,246,.08);
+}
+
+.quantum-orb::before,
+.quantum-orb::after {
+    content: "";
+    position: absolute;
+    inset: 50px;
+    border: 1px solid rgba(139,92,246,.3);
+    border-radius: 50%;
+    transform: rotate(60deg);
+}
+
+.quantum-orb::after {
+    transform: rotate(-60deg);
+}
+
+.photon {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--accent);
+    animation: orbit 7s linear infinite;
+}
+
+@keyframes orbit {
+    from {
+        transform: rotate(0deg) translateX(180px) rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg) translateX(180px) rotate(-360deg);
+    }
+}
+
+/* ---------------- SECTION ---------------- */
+
+section {
+    padding: 110px 0;
+}
+
+.section-title {
+    max-width: 720px;
+    margin-bottom: 55px;
+}
+
+.section-title span {
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: .75rem;
+    letter-spacing: .15em;
+}
+
+.section-title h2 {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    margin: 10px 0 15px;
+}
+
+.section-title p {
+    color: var(--muted);
+}
+
+/* ---------------- RESEARCH ---------------- */
+
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.research-card {
+    padding: 30px;
+    min-height: 260px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    transition: .35s;
+}
+
+.research-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(103,232,249,.35);
+}
+
+.icon {
+    font-size: 30px;
+    margin-bottom: 22px;
+}
+
+.research-card h3 {
+    font-family: "Space Grotesk", sans-serif;
+    margin-bottom: 12px;
+}
+
+.research-card p {
+    color: var(--muted);
+    font-size: .92rem;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+}
+
+.tag {
+    font-size: .7rem;
+    padding: 4px 8px;
+    border-radius: 5px;
+    background: rgba(255,255,255,.05);
+    color: #b9c7d7;
+}
+
+/* ---------------- STATS ---------------- */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stat {
+    text-align: center;
+    padding: 35px 15px;
+    border-right: 1px solid var(--border);
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat strong {
+    display: block;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* ---------------- PEOPLE ---------------- */
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.person {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.person-photo {
+    height: 240px;
+    background:
+        linear-gradient(145deg,
+        rgba(103,232,249,.15),
+        rgba(139,92,246,.2));
+    display: grid;
+    place-items: center;
+    font-size: 60px;
+    color: rgba(255,255,255,.4);
+}
+
+.person-info {
+    padding: 20px;
+}
+
+.person-info h3 {
+    font-family: "Space Grotesk", sans-serif;
+}
+
+.person-info p {
+    color: var(--muted);
+    font-size: .83rem;
+}
+
+/* ---------------- PUBLICATIONS ---------------- */
+
+.publication {
+    padding: 25px 0;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 25px;
+}
+
+.pub-year {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.publication h3 {
+    font-size: 1rem;
+    margin-bottom: 6px;
+}
+
+.publication p {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* ---------------- FACILITIES ---------------- */
+
+.facility-grid {
+    display: grid;
+    grid-template-columns: 1.4fr .8fr;
+    gap: 20px;
+}
+
+.facility-main,
+.facility-small {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--card);
+}
+
+.facility-image {
+    height: 330px;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(103,232,249,.25), transparent 15%),
+        radial-gradient(circle at 70% 60%, rgba(139,92,246,.3), transparent 20%),
+        #0a1423;
+    position: relative;
+}
+
+.facility-image::after {
+    content: "QUANTUM LAB";
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    font-family: "Space Grotesk";
+    font-size: 2rem;
+    letter-spacing: .15em;
+    color: rgba(255,255,255,.15);
+}
+
+.facility-content {
+    padding: 25px;
+}
+
+.facility-content p {
+    color: var(--muted);
+}
+
+.facility-side {
+    display: grid;
+    gap: 20px;
+}
+
+.facility-small {
+    padding: 25px;
+}
+
+/* ---------------- NEWS ---------------- */
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.news-card {
+    border: 1px solid var(--border);
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.news-date {
+    color: var(--accent);
+    font-size: .75rem;
+}
+
+.news-card h3 {
+    margin: 12px 0;
+    font-family: "Space Grotesk";
+}
+
+.news-card p {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+/* ---------------- CTA ---------------- */
+
+.cta {
+    text-align: center;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(circle at center,
+        rgba(103,232,249,.08),
+        transparent 55%);
+    border-radius: 20px;
+    padding: 80px 25px;
+}
+
+.cta h2 {
+    font-family: "Space Grotesk";
+    font-size: clamp(2rem,4vw,3.5rem);
+    margin-bottom: 15px;
+}
+
+.cta p {
+    color: var(--muted);
+    max-width: 600px;
+    margin: auto auto 30px;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    padding: 50px 0;
+    border-top: 1px solid var(--border);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+}
+
+footer p,
+footer a {
+    color: var(--muted);
+    font-size: .85rem;
+}
+
+footer h4 {
+    margin-bottom: 15px;
+}
+
+.footer-links {
+    display: grid;
+    gap: 8px;
+}
+
+.copyright {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: .75rem;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width: 900px) {
+
+    .quantum-orb {
+        opacity: .25;
+        right: -150px;
+    }
+
+    .research-grid,
+    .news-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .people-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+
+    .facility-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 650px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+
+    .research-grid,
+    .news-grid,
+    .people-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .publication {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<header>
+<div class="container nav">
+
+<a href="#" class="logo">
+    <div class="logo-symbol">ϕ</div>
+    Quantum Photonics Lab
+</a>
+
+<ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#people">People</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="menu">☰</div>
+
+</div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="container">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+Quantum Optics · Photonics · Quantum Technology
+</div>
+
+<h1>
+Exploring the
+<span class="gradient">quantum</span>
+nature of light.
+</h1>
+
+<p>
+We investigate light–matter interactions, single-photon technologies,
+quantum photonic devices and emerging materials to develop the
+next generation of quantum technologies.
+</p>
+
+<div class="buttons">
+<a href="#research" class="btn btn-primary">
+Explore Our Research
+</a>
+
+<a href="#publications" class="btn btn-outline">
+View Publications
+</a>
+</div>
+
+</div>
+
+</div>
+
+<div class="quantum-orb">
+<div class="photon"></div>
+</div>
+
+</section>
+
+
+<!-- ================= RESEARCH ================= -->
+
+<section id="research">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Research</span>
+
+<h2>
+From fundamental quantum optics
+to practical quantum devices.
+</h2>
+
+<p>
+Our research spans fundamental and applied aspects of quantum photonics,
+with a particular focus on developing experimentally realizable
+technologies for quantum communication, sensing and computation.
+</p>
+
+</div>
+
+
+<div class="research-grid">
+
+<div class="research-card">
+
+<div class="icon">⚛</div>
+
+<h3>Quantum Optics</h3>
+
+<p>
+Experimental investigation of non-classical light,
+photon statistics, quantum correlations and light–matter interactions.
+</p>
+
+<div class="tags">
+<span class="tag">Single Photons</span>
+<span class="tag">Quantum Correlations</span>
+<span class="tag">Photon Statistics</span>
+</div>
+
+</div>
+
+
+<div class="research-card">
+
+<div class="icon">◉</div>
+
+<h3>Single-Photon Detectors</h3>
+
+<p>
+Development and metrology of high-performance single-photon
+detectors for quantum communication, sensing and spectroscopy.
+</p>
+
+<div class="tags">
+<span class="tag">SNSPD</span>
+<span class="tag">SPD</span>
+<span class="tag">Detector Metrology</span>
+</div>
+
+</div>
+
+
+<div class="research-card">
+
+<div class="icon">◇</div>
+
+<h3>Quantum Photonics</h3>
+
+<p>
+Design and characterization of integrated and nanostructured
+photonic systems for controlling individual photons.
+</p>
+
+<div class="tags">
+<span class="tag">Nanophotonics</span>
+<span class="tag">Metamaterials</span>
+<span class="tag">Integrated Photonics</span>
+</div>
+
+</div>
+
+
+<div class="research-card">
+
+<div class="icon">⌬</div>
+
+<h3>Quantum Materials</h3>
+
+<p>
+Exploring emerging materials and nanostructures for advanced
+optical and quantum-device applications.
+</p>
+
+<div class="tags">
+<span class="tag">2D Materials</span>
+<span class="tag">Metamaterials</span>
+<span class="tag">Nanostructures</span>
+</div>
+
+</div>
+
+
+<div class="research-card">
+
+<div class="icon">⌁</div>
+
+<h3>Quantum Sensing</h3>
+
+<p>
+Developing photon-based sensing approaches capable of reaching
+performance beyond conventional measurement techniques.
+</p>
+
+<div class="tags">
+<span class="tag">Precision Measurement</span>
+<span class="tag">Quantum Sensors</span>
+</div>
+
+</div>
+
+
+<div class="research-card">
+
+<div class="icon">∞</div>
+
+<h3>Quantum Technologies</h3>
+
+<p>
+Translating advances in quantum science into technologies for
+communication, computation and precision metrology.
+</p>
+
+<div class="tags">
+<span class="tag">QKD</span>
+<span class="tag">Quantum Computing</span>
+<span class="tag">Metrology</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section>
+
+<div class="container">
+
+<div class="stats">
+
+<div class="stat">
+<strong>25+</strong>
+<span>Research Publications</span>
+</div>
+
+<div class="stat">
+<strong>10+</strong>
+<span>Years of Research</span>
+</div>
+
+<div class="stat">
+<strong>08</strong>
+<span>Active Research Projects</span>
+</div>
+
+<div class="stat">
+<strong>15+</strong>
+<span>Collaborations</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PEOPLE ================= -->
+
+<section id="people">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>People</span>
+
+<h2>The people behind the photons.</h2>
+
+<p>
+Our interdisciplinary team brings together physicists, engineers,
+research scholars and students united by a common interest in
+quantum science and photonic technologies.
+</p>
+
+</div>
+
+
+<div class="people-grid">
+
+<div class="person">
+
+<div class="person-photo">👨‍🔬</div>
+
+<div class="person-info">
+<h3>Prof. / Dr. Name</h3>
+<p>Principal Investigator</p>
+</div>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-photo">👩‍🔬</div>
+
+<div class="person-info">
+<h3>Dr. Name</h3>
+<p>Research Scientist</p>
+</div>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-photo">👨‍🎓</div>
+
+<div class="person-info">
+<h3>Name</h3>
+<p>PhD Research Scholar</p>
+</div>
+
+</div>
+
+
+<div class="person">
+
+<div class="person-photo">👩‍🎓</div>
+
+<div class="person-info">
+<h3>Name</h3>
+<p>Project Associate</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PUBLICATIONS ================= -->
+
+<section id="publications">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Selected Publications</span>
+
+<h2>Research that moves the field forward.</h2>
+
+</div>
+
+
+<div class="publication">
+
+<div class="pub-year">2026</div>
+
+<div>
+<h3>
+Metrology of Single-Photon Detectors: Prospects and Progress
+</h3>
+
+<p>
+Author Name et al. · Journal Name · DOI: xx.xxxx/xxxxx
+</p>
+</div>
+
+</div>
+
+
+<div class="publication">
+
+<div class="pub-year">2025</div>
+
+<div>
+<h3>
+Nanostructured Photonic Metamaterials for Enhanced Quantum Detection
+</h3>
+
+<p>
+Author Name et al. · Journal Name · DOI: xx.xxxx/xxxxx
+</p>
+</div>
+
+</div>
+
+
+<div class="publication">
+
+<div class="pub-year">2024</div>
+
+<div>
+<h3>
+Experimental Investigation of Single-Photon Detection Performance
+</h3>
+
+<p>
+Author Name et al. · Journal Name · DOI: xx.xxxx/xxxxx
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FACILITIES ================= -->
+
+<section id="facilities">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Facilities</span>
+
+<h2>Where quantum experiments become reality.</h2>
+
+</div>
+
+
+<div class="facility-grid">
+
+<div class="facility-main">
+
+<div class="facility-image"></div>
+
+<div class="facility-content">
+
+<h3>Quantum Photonics Laboratory</h3>
+
+<p>
+Our laboratory houses optical, cryogenic, electronic and
+nanofabrication capabilities for the development and
+characterization of quantum photonic devices.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="facility-side">
+
+<div class="facility-small">
+
+<h3>Optical Characterization</h3>
+
+<p>
+Laser systems, spectroscopy, interferometry,
+photon counting and time-correlated measurements.
+</p>
+
+</div>
+
+<div class="facility-small">
+
+<h3>Cryogenic Measurements</h3>
+
+<p>
+Low-temperature measurement platforms for superconducting
+quantum devices and single-photon detectors.
+</p>
+
+</div>
+
+<div class="facility-small">
+
+<h3>Device Characterization</h3>
+
+<p>
+High-speed electronics, time-correlated photon counting,
+detector metrology and nanophotonic characterization.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= NEWS ================= -->
+
+<section id="news">
+
+<div class="container">
+
+<div class="section-title">
+
+<span>Latest News</span>
+
+<h2>What's happening in the lab.</h2>
+
+</div>
+
+
+<div class="news-grid">
+
+<div class="news-card">
+
+<div class="news-date">08 SEPTEMBER 2026</div>
+
+<h3>
+New research direction in superconducting single-photon detection
+</h3>
+
+<p>
+Our group has initiated a new experimental programme exploring
+advanced architectures for high-performance photon detection.
+</p>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-date">2026</div>
+
+<h3>
+Invited talk at an international quantum technology conference
+</h3>
+
+<p>
+Group members presented recent advances in quantum photonics
+and detector metrology.
+</p>
+
+</div>
+
+
+<div class="news-card">
+
+<div class="news-date">2026</div>
+
+<h3>
+New collaboration in quantum materials and nanophotonics
+</h3>
+
+<p>
+A new collaborative programme has been established to explore
+nanostructured materials for quantum photonic devices.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTACT CTA ================= -->
+
+<section id="contact">
+
+<div class="container">
+
+<div class="cta">
+
+<h2>
+Interested in quantum light?
+</h2>
+
+<p>
+We are always interested in scientific collaborations,
+research discussions and motivated students interested
+in quantum optics and photonics.
+</p>
+
+<div class="buttons" style="justify-content:center;">
+
+<a href="mailto:research@example.com"
+class="btn btn-primary">
+Contact the Group
+</a>
+
+<a href="#people"
+class="btn btn-outline">
+Meet the Team
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+<div class="footer-grid">
+
+<div>
+
+<div class="logo">
+<div class="logo-symbol">ϕ</div>
+Quantum Photonics Lab
+</div>
+
+<br>
+
+<p>
+Quantum Optics · Photonics · Single-Photon Technologies
+· Quantum Materials · Metrology
+</p>
+
+</div>
+
+
+<div>
+
+<h4>Research</h4>
+
+<div class="footer-links">
+<a href="#research">Quantum Optics</a>
+<a href="#research">Photonics</a>
+<a href="#research">Single-Photon Detectors</a>
+<a href="#research">Quantum Materials</a>
+</div>
+
+</div>
+
+
+<div>
+
+<h4>Connect</h4>
+
+<div class="footer-links">
+<a href="#">Google Scholar</a>
+<a href="#">ORCID</a>
+<a href="#">LinkedIn</a>
+<a href="#">ResearchGate</a>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="copyright">
+
+© 2026 Quantum Photonics Research Group.
+All rights reserved.
+
+</div>
+
+</div>
+
+</footer>
+
+</body>
+</html>
